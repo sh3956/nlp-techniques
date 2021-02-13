@@ -134,16 +134,18 @@ def prepare_data_for_training(sentences, w2v):
     V = len(data)
     # word sort by occurrence
     data = sorted(list(data.keys()))
+    # vocab records word and its index
     vocab = {}
     for i in range(len(data)):
         vocab[data[i]] = i
     # count surrounding words
     for sentence in sentences:
         for i in range(len(sentence)):
+            # there is a context and center word list for every sentences
             center_word = [0 for x in range(V)]
             center_word[vocab[sentence[i]]] = 1
             context = [0 for x in range(V)]
-
+            # need to count every center word's context words
             for j in range(i - w2v.window_size, i + w2v.window_size):
                 if i != j and 0 <= j < len(sentence):
                     context[vocab[sentence[j]]] += 1
@@ -165,5 +167,4 @@ def main(text_data):
     w2v.train(epochs)
 
     print(w2v.predict("around", 3))
-
 

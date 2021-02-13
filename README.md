@@ -2,5 +2,7 @@
 
 Records NLP algorithms source code
 Including:
+- Basic Text Preprocessing
 - N-GRAM
 - Skip Gram
+- Transformer
