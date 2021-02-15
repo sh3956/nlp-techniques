@@ -5,6 +5,7 @@
     tokens in the sequence
 
 """
+import math
 import torch
 import torch.nn as nn
 
